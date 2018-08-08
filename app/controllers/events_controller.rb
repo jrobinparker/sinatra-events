@@ -10,9 +10,9 @@ class EventsController < ApplicationController
   end
 
   post '/' do
-    @event = Event.create(params[:event])
+    @event = Event.create(name: params[:name], start_date: params[:start_date], start_time: params[:start_time], end_date: params[:end_date], end_time: params[:end_time], description: params[:description])
     @event.save
-    redirect to "events/#{@event.id}"
+    redirect to "/#{@event.id}"
   end
 
   get '/:id' do
@@ -29,13 +29,13 @@ class EventsController < ApplicationController
     @event = Event.find_by_id(params[:id])
     @event = Event.update(params[:event])
     @event.save
-    redirect to "events/#{@event.id}"
+    redirect to "/#{@event.id}"
   end
 
   delete '/:id/delete' do
     @event = Event.find_by_id(params[:id])
     @event.delete
     redirect to "events"
-  end 
+  end
 
 end
