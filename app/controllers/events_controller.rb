@@ -40,7 +40,7 @@ class EventsController < ApplicationController
   delete '/:id/delete' do
     @event = Event.find_by_id(params[:id])
     @event.delete
-    redirect to "events"
+    redirect "events"
   end
 
 end
