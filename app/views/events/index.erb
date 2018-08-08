@@ -1,15 +1,22 @@
-<p><a href="/logout">Log Out</a></p>
+<h1 style="padding-top: 10px; padding-bottom: 10px;">All Upcoming Events</h1>
 
-<h1>All Upcoming Events</h1>
+    <div class="row">
 
-<ul>
-  <% @events.each do |event| %>
-  <li><%= event.name %></li>
-  <ul>
-    <li><%= event.start_date %> at <%= event.start_time %> - <%= event.end_date %> at <%= event.end_time %></li>
-    <li><a href="/events/<%= event.id %>">Click here to view event description</a></li>
-  </ul>
-  <% end %>
-</li>
+      <% @events.each do |event| %>
 
-<p><a href="/events/new">Create a New Event</a></p>
+        <div class="col-sm" style="padding-bottom: 10px;">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+
+              <h5 class="card-title"><%= event.name %></h5>
+              <h6 class="card-subtitle mb-2 text-muted"><%= event.start_date %> at <%= event.start_time %> - <%= event.end_date %> at <%= event.end_time %></h6>
+              <p class="card-text"><%= event.description.truncate(25, separator: /\s/) %></p>
+              <a href="/events/<%= event.id %>" class="card-link">See more</a>
+
+            </div>
+          </div>
+        </div>
+
+      <% end %>
+
+    </div>

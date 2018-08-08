@@ -1,4 +1,4 @@
-<h1><%= @event.name %></h1>
+<h1 style="padding-top: 10px; padding-bottom: 10px;"><%= @event.name %></h1>
 
 <br />
 
@@ -17,11 +17,11 @@
 
 <p><a href="/events">Return to All Events</a></p>
 <br />
-<% if current_user %>
+<% if @event.user_id == current_user.id %>
   <p><a href="/events/<%= @event.id %>/edit">Edit event</a></p>
   <br/>
   <form method="post" action="/events/<%= @event.id %>/delete">
     <input id="hidden" type="hidden" name="_method" value="delete">
-    <input type="submit" value="Delete Event">
+    <input type="submit" class="btn btn-danger"value="Delete Event">
   </form>
 <% end %>
