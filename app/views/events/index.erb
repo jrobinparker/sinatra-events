@@ -1,0 +1,11 @@
+<h1>All Upcoming Events</h1>
+
+<ul>
+  <% @events.each do |event| %>
+  <li><%= event.name %></li>
+  <ul>
+    <li><%= event.start_date %> at <%= event.start_time %> - <%= event.end_date %> at <%= event.end_time %></li>
+    <li><%= event.description %></li>
+  </ul>
+  <% end %>
+</li>
