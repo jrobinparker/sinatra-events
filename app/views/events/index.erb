@@ -5,7 +5,7 @@
   <li><%= event.name %></li>
   <ul>
     <li><%= event.start_date %> at <%= event.start_time %> - <%= event.end_date %> at <%= event.end_time %></li>
-    <li><%= event.description %></li>
+    <li><a href="/events/<%= event.id %>">Click here to view event description</a></li>
   </ul>
   <% end %>
 </li>
