@@ -12,7 +12,7 @@
   <br />
   <label>Event End Time:</label> <input type="text" name="end_time" value="<%= @event.end_time %>">
   <br />
-  <label>Event Description:</label> <textarea name="description" rows="10" cols="30" value="<%= @event.description %>">
+  <label>Event Description:</label> <textarea name="description" rows="10" cols="30"><%= @event.description %></textarea>
   <br />
   <input type="submit" value="Edit Event">
 </form>

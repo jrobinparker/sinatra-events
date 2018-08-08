@@ -16,8 +16,12 @@
 <br />
 
 <p><a href="/events">Return to All Events</a></p>
-<p>Click below to delete event</p>
-<form method="post" action="/events/<%= @event.id %>/delete">
-  <input id="hidden" type="hidden" name="_method" value="delete">
-  <input type="submit" value="Delete Event">
-</form>
+<br />
+<% if current_user %>
+  <p><a href="/events/<%= @event.id %>/edit">Edit event</a></p>
+  <br/>
+  <form method="post" action="/events/<%= @event.id %>/delete">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Event">
+  </form>
+<% end %>

@@ -44,10 +44,10 @@ class ApplicationController < Sinatra::Base
   post "/login" do
     @user = User.find_by(username: params[:username])
     if @user && @user.authenticate(params[:password])
-      session[:user_id] = @user.id
-      redirect to "events"
+     session[:user_id] = @user.id
+     redirect to "events"
     else
-      erb :'sessions/login'
+     redirect to "/login"
     end
   end
 
