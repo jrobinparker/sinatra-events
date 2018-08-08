@@ -15,13 +15,20 @@
 
 <br />
 
-<p><a href="/events">Return to All Events</a></p>
+<a class ="btn btn-primary btn-lg btn-block" href="/events">Return to All Events</a>
+
 <br />
+
+<br/>
+
 <% if @event.user_id == current_user.id %>
-  <p><a href="/events/<%= @event.id %>/edit">Edit event</a></p>
-  <br/>
-  <form method="post" action="/events/<%= @event.id %>/delete">
-    <input id="hidden" type="hidden" name="_method" value="delete">
-    <input type="submit" class="btn btn-danger"value="Delete Event">
-  </form>
+    <a class="btn btn-info btn-lg btn-block" href="/events/<%= @event.id %>/edit">Edit event</a>
+
+    <br />
+    <br />
+
+    <form method="post" action="/events/<%= @event.id %>/delete">
+      <input id="hidden" type="hidden" name="_method" value="delete">
+      <input type="submit" class="btn btn-danger btn-lg btn-block" value="Delete Event">
+    </form>
 <% end %>
