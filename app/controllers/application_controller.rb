@@ -10,20 +10,20 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    erb :'home/home'
+    erb :'/welcome'
   end
 
-  get "/signup" do
+  get "/registration" do
     if logged_in?
       redirect to "events"
     else
-      erb :'home/signup'
+      erb :'registration/signup'
     end
   end
 
-  post "/signup" do
+  post "/registration" do
     if params[:username] == "" || params[:email] == "" || params[:password] == "" || params[:first_name] == "" || params[:last_name] == ""
-      redirect 'home/signup'
+      erb :'registration/signup'
     else
       @user = User.create(username: params[:username], password: params[:password], email: params[:email], first_name: params[:first_name], last_name: params[:last_name])
       if @user && @user.authenticate(params[:password])
@@ -37,7 +37,7 @@ class ApplicationController < Sinatra::Base
     if logged_in?
       redirect to "events"
     else
-      erb :'home/login'
+      erb :'sessions/login'
     end
   end
 
@@ -47,17 +47,13 @@ class ApplicationController < Sinatra::Base
       session[:user_id] = @user.id
       redirect to "events"
     else
-      redirect to "home/failure"
+      erb :'sessions/login'
     end
-  end
-
-  get "/failure" do
-    erb :'home/failure'
   end
 
   get "/logout" do
     session.clear
-    redirect "home/login"
+    redirect "login"
   end
 
   helpers do
@@ -68,5 +64,6 @@ class ApplicationController < Sinatra::Base
     def current_user
       @user = User.find(session[:user_id])
     end
+  end
 
 end
