@@ -19,6 +19,7 @@ class EventsController < ApplicationController
 
   post '/' do
     @event = Event.create(name: params[:name], start_date: params[:start_date], start_time: params[:start_time], end_date: params[:end_date], end_time: params[:end_time], description: params[:description])
+    @event.user_id = current_user.id
     @event.save
     redirect to "/#{@event.id}"
   end
