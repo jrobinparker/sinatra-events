@@ -25,11 +25,16 @@ class EventsController < ApplicationController
     erb :"events/edit"
   end
 
-  post '/:id' do
+  patch '/:id' do
     @event = Event.find_by_id(params[:id])
-    @event = Event.update(params[:event])
+    @event.name = params[:name]
+    @event.start_date = params[:start_date]
+    @event.start_time = params[:start_time]
+    @event.end_date = params[:end_date]
+    @event.end_time = params[:end_time]
+    @event.description = params[:description]
     @event.save
-    redirect to "/#{@event.id}"
+    redirect "events/#{@event.id}"
   end
 
   delete '/:id/delete' do

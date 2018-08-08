@@ -1,0 +1,18 @@
+<h1>Edit <%= @event.name %></h1>
+
+<form action="/events/<%= @event.id %>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <label>Event Name:</label> <input type="text" name="name" value="<%= @event.name %>">
+  <br />
+  <label>Event Start Date:</label> <input type="text" name="start_date" value="<%= @event.start_date %>">
+  <br />
+  <label>Event Start Time:</label> <input type="text" name="start_time" value="<%= @event.start_time %>">
+  <br />
+  <label>Event End Date:</label> <input type="text" name="end_date" value="<%= @event.end_date %>">
+  <br />
+  <label>Event End Time:</label> <input type="text" name="end_time" value="<%= @event.end_time %>">
+  <br />
+  <label>Event Description:</label> <input type="text" name="description" value="<%= @event.description %>">
+  <br />
+  <input type="submit" value="Edit Event">
+</form>
