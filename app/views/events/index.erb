@@ -9,7 +9,8 @@
             <div class="card-body">
 
               <h5 class="card-title"><%= event.name %></h5>
-              <h6 class="card-subtitle mb-2 text-muted"><%= event.start_date %> at <%= event.start_time %> - <%= event.end_date %> at <%= event.end_time %></h6>
+              <h6 class="card-subtitle mb-2 text-muted"><%= event.start_date %> at <%= event.start_time %></h6>
+              <h6 class="card-subtitle mb-2 text-muted"><%= event.end_date %> at <%= event.end_time %></h6>
               <p class="card-text"><%= event.description.truncate(25, separator: /\s/) %></p>
               <a href="/events/<%= event.id %>" class="card-link">See more</a>
 

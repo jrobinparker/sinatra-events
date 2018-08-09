@@ -36,7 +36,11 @@ class EventsController < ApplicationController
   get '/:id/edit' do
     if logged_in?
       @event = Event.find_by_id(params[:id])
-      erb :"events/edit"
+      if @event.user_id == current_user.id
+        erb :"events/edit"
+      else
+        redirect to "/#{@event.id}"
+      end
     else
       redirect "/login"
     end
@@ -57,8 +61,12 @@ class EventsController < ApplicationController
   delete '/:id/delete' do
     if logged_in?
       @event = Event.find_by_id(params[:id])
-      @event.delete
-      redirect "events"
+      if @event.user_id == current_user.id
+        @event.delete
+        redirect "events"
+      else
+        redirect to "/#{@event.id}"
+      end 
     else
       redirect "/login"
     end

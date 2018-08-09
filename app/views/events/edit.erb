@@ -3,28 +3,28 @@
 <form action="/events/<%= @event.id %>" method="post">
   <div class="form-group">
       <label for="name">Event Name:</label>
-      <input type="text" class="form-control" id="event_name" name="name" placeholder="Enter event name">
+      <input type="text" class="form-control" id="event_name" name="name" value="<%= @event.name %>" />
     </div>
     <div class="form-group">
       <label for="start_date">Start Date:</label>
-      <input type="text" class="form-control" id="event_start_date" name="start_date" placeholder="Enter event start date">
+      <input type="text" class="form-control" id="event_start_date" name="start_date" value="<%= @event.start_date %>" />
     </div>
     <div class="form-group">
       <label for="start_time">Start Time:</label>
-      <input type="text" class="form-control" id="event_start_time" name="start_timee" placeholder="Enter event start time">
+      <input type="text" class="form-control" id="event_start_time" name="start_time" value="<%= @event.start_time %>" />
     </div>
     <div class="form-group">
       <label for="end_date">End Date:</label>
-      <input type="text" class="form-control" id="event_end_date" name="end_date" placeholder="Enter event end date">
+      <input type="text" class="form-control" id="event_end_date" name="end_date" value="<%= @event.end_date %>" />
     </div>
     <div class="form-group">
       <label for="end_time">End Time:</label>
-      <input type="text" class="form-control" id="event_end_time" name="end_time" placeholder="Enter event end time">
+      <input type="text" class="form-control" id="event_end_time" name="end_time" value="<%= @event.end_time %>" />
     </div>
     <div class="form-group">
-      <label for="start_date">Start Date:</label>
-      <textarea class="form-control" id="event_description" name="event_description" placeholder="Enter event description"></textarea>
+      <label for="start_date">Description:</label>
+      <textarea rows="6" class="form-control" id="event_description" name="event_description"><%= @event.description %></textarea>
     </div>
-    <button type="submit" class="btn btn-primary">Create Event</button>
+    <button type="submit" class="btn btn-primary btn-lg btn-block">Update Event</button>
   </div>
 </form>
