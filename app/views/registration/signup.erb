@@ -1,7 +1,10 @@
 <h1 style="padding-top: 10px; padding-bottom: 10px;">Create an account</h1>
 
-<%= "Please complete all fields to create an account" if params[:user].blank? %>
-
+<% if @user && @user.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    All fields are required
+  </div>
+<% end %>
 
 <form action="/registration" method="post">
   <div class="form-group">

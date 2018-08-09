@@ -22,15 +22,16 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/registration" do
-    if params[:username] == "" || params[:email] == "" || params[:password] == ""
-      erb :'registration/signup'
-    else
-      @user = User.create(username: params[:username], password: params[:password], email: params[:email])
-      if @user && @user.authenticate(params[:password])
+      @user = User.new
+      @user.username = params[:username]
+      @user.password = params[:password]
+      @user.email = params[:email]
+      if @user.save && @user.authenticate(params[:password])
         session[:user_id] = @user.id
         redirect to "events"
+      else
+        erb :'registration/signup'
       end
-    end
   end
 
   get "/login" do
@@ -47,7 +48,7 @@ class ApplicationController < Sinatra::Base
      session[:user_id] = @user.id
      redirect to "/events"
     else
-     redirect to "/login"
+      erb :'sessions/login'
     end
   end
 

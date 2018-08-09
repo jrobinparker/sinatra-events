@@ -18,10 +18,13 @@ class EventsController < ApplicationController
   end
 
   post '/' do
-    @event = Event.create(name: params[:name], start_date: params[:start_date], start_time: params[:start_time], end_date: params[:end_date], end_time: params[:end_time], description: params[:description])
+    @event = Event.new(name: params[:name], start_date: params[:start_date], start_time: params[:start_time], end_date: params[:end_date], end_time: params[:end_time], description: params[:description])
     @event.user_id = current_user.id
-    @event.save
-    redirect to "/#{@event.id}"
+    if @event.save
+      redirect to "/#{@event.id}"
+    else
+      erb :"events/new"
+    end
   end
 
   get '/:id' do
@@ -54,8 +57,12 @@ class EventsController < ApplicationController
     @event.end_date = params[:end_date]
     @event.end_time = params[:end_time]
     @event.description = params[:description]
-    @event.save
-    redirect "events/#{@event.id}"
+    if @event.save
+      redirect to "/#{@event.id}"
+    else
+      @event = Event.find_by_id(params[:id])
+      erb :"events/edit"
+    end
   end
 
   delete '/:id/delete' do
@@ -66,7 +73,7 @@ class EventsController < ApplicationController
         redirect "events"
       else
         redirect to "/#{@event.id}"
-      end 
+      end
     else
       redirect "/login"
     end

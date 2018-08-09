@@ -1,5 +1,15 @@
 <h1 style="padding-top: 10px; padding-bottom: 10px;">Log In</h1>
 
+<% if @user == nil %>
+  <div class="alert alert-danger" role="alert">
+    User not found!
+  </div>
+<% elsif @user.password == nil %>
+  <div class="alert alert-danger" role="alert">
+    Password does not match
+  </div>
+<% end %>
+
 <form action="/login" method="POST">
   <div class="form-group">
     <label for="username">Username:</label>
